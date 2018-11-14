@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>roll</title>
+</head>
+<style>
+.scroll ul {
+    margin: 0px;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.scroll ul li {
+    height: 50px;
+    width: 50px;
+    float: left;
+    display: block;
+    line-height: 50px;
+    text-align: center;
+
+}
+
+.scroll {
+    float: left;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+
+}
+
+.singalWrapper {
+    position: relative;
+    width: 200px;
+    top: 20px;
+}
+
+.singalWrapper .firstLine, .singalWrapper .secondLine,.singalWrapper .thirdLine{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    background-color: lightcoral;
+}
+
+.singalWrapper .secondLine {
+    top: 3px;
+    left: 200px;
+    transform: rotate(90deg);
+    transform-origin: left top;
+}
+
+.singalWrapper .thirdLine {
+    left: 200px;
+    top: 200px;
+}
+.singalWrapper .wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.singalWrapper .ball {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: lightcoral;
+    top: -4px;
+}
+.ball2, .ball3 {
+    left: -7px;
+}
+.none {
+    display: none;
+}
+</style>
+<body>
+    <!-- <div class="scroll">
+        <ul>
+        <li >1</li>
+            <li >2</li>
+            <li >3</li>
+            <li >4</li>
+            <li >5</li>
+      </ul>
+    </div>
+    
+    <input type="button" id="bb" value="向右" /> -->
+
+    <div class="singalWrapper">
+        <div class="firstLine">
+            <div class="wrapper" style="z-index: 6">
+                <div class="ball ball1"></div>
+            </div>
+        </div>
+        <div class="secondLine" style="z-index: 5">
+            <div class="wrapper" >
+                <div class="ball ball2" style="display: none"></div>
+            </div>
+        </div>
+        <div class="thirdLine" style="z-index: 4">
+            <div class="wrapper" >
+                <div class="ball ball3" style="display: none"></div>
+            </div>
+        </div>
+        <div class="icon icon1"></div>
+    </div>
+
+    <script src="../commonJs/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function() {
+            setInterval(function() {
+                $(".ball1").show().animate({"left": "97%"}, 800, 'linear', function() {
+                    $(this).css("left", "0");
+                    $(this).hide();
+                    $(".ball2").show().animate({"left": "97%"}, 800, 'linear', function() {
+                        $(this).css("left", "-7px");
+                        $(this).hide();
+                        $(".ball3").show().animate({"left": "97%"}, 800, 'linear', function() {
+                            $(this).css("left", "-7px");
+                            $(this).hide();
+                        })
+                    })
+                })
+            }, 3000)
+            
+        })
+    </script>
+
+    <!-- <script>
+        $(document).ready(function(){
+            $("#bb").click(function(){
+            $(".scroll ul").animate({
+                marginRight:"-25px"
+            },100,function(){
+                $(this).css({marginRight:"0px"}).find("li:first").appendTo(this);
+                });	 
+            });
+        });
+    </script> -->
+</body>
+</html>
