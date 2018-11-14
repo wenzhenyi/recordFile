@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画-水流效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .singalpineWrapper {
+            position: relative;
+            width: 500px;
+        }
+        .singalpineWrapper div{
+            position: absolute;
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            background-color: lightcoral;
+            /* text-align: center; */
+            color: #fff;
+        }
+        .singalpineWrapper .pine2 {
+            top: 20px;
+            left: 200px;
+            transform: rotate(90deg);
+            transform-origin: left top;
+        }
+        .singalpineWrapper .pine3 {
+            left: 200px;
+            top: 200px;
+        }
+        .singalpineWrapper div span{
+            /* position: absolute; */
+            float: left;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            background-color: lightgreen;
+            margin-right: 10px;
+            margin-top: 11px;
+        }    
+        .doublepineWrapper div span{
+            /* position: absolute; */
+            float: left;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 2px;
+            background-color: lightgreen;
+            margin-right: 10px;
+            margin-top: 11px;
+        }
+        .doublepineWrapper .content4 span, .doublepineWrapper .content2 span{
+            background-color: aqua;
+        }
+
+        /* .singalpineWrapper div span:nth-of-type(2) {
+            left: 20px;
+        }
+
+        .singalpineWrapper div span:nth-of-type(3) {
+            left: 50px;
+        } */
+
+        .doublepineWrapper {
+            margin-left: 500px;
+            position: relative;
+            width: 600px;
+        }
+
+        .doublepineWrapper div{
+            position: absolute;
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            background-color: lightcoral;
+            color: #fff;
+            /* overflow: hidden; */
+        }
+        .doublepineWrapper .firstPine {
+            top: 200px;
+        }
+        .doublepineWrapper .secondPine {
+            left: 200px;
+            transform: rotate(90deg);
+            transform-origin: left top;
+        }
+        .doublepineWrapper div:nth-of-type(3) {
+            left: 200px;
+        }
+        .shine {
+            position: relative;
+            top: 300px;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="singalpineWrapper">
+        <div class="pine1" style="overflow: hidden;font-size:0">
+            <div class="line-content" style="width: 200%; height: 100%; position: relative; left: -100%">
+                <p class="content" style="display:inline-block;height: 100%;width: 50%">
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                </p>
+            </div>
+            <span class="icon" style="position: absolute; width:20px; height: 20px;top:-1px; right: -10px; background-color: lightgreen"></span>
+        </div>
+        <!-- <div class="icon" style="position: absolute; width:20px; height: 20px; top: -1px; right: 0px; ">
+            <span style="display: inline-block; width:20px; height: 20px;background-color: lightgreen"></span>
+        </div> -->
+        <div class="pine2" style="overflow: hidden;font-size:0">
+            <div class="line-content" style="width: 400px; height: 100%; position: relative; left: -100%">
+                <p class="content" style="display:inline-block;height: 100%;width: 50%">
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                </p>
+            </div>
+            <span class="icon" style="position: absolute; width:20px; height: 20px;top:-1px; right: -10px; background-color: lightgreen"></span>
+        </div>
+        <div class="pine3" style="overflow: hidden;font-size:0">
+            <div class="line-content" style="width: 400px; height: 100%; position: relative; left: -100%">
+                <p class="content" style="display:inline-block;height: 100%;width: 50%">
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                </p>
+            </div>
+            <!-- <span style="position: absolute; width:20px; height: 20px;top:-1px; right: -10px; background-color: lightyellow"></span> -->
+        </div>
+    </div>
+
+
+    <div class="doublepineWrapper">
+        <div class="firstPine" style="overflow: hidden;font-size:0">
+            <div class="line-content2" style="width: 400px; height: 100%; position: relative;">
+                <p class="content2" style="display:inline-block;height: 100%;width: 50%">
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                </p>
+            </div>
+            <span style="position: absolute; width:20px; height: 20px;top:-1px; right: -10px; background-color: lightyellow"></span>
+        </div>
+        <div class="secondPine" style="overflow: hidden;font-size:0">
+            <div class="line-content3" style="width: 100%;height: 100%; position: relative;">
+                <div class="content3" style="display:inline-block;height: 100%;width: 50%; overflow: hidden;">
+                    <div class="s-line1" style="display: inline-block; position: absolute; width: 200px; left: 0;">
+                        <p class="s-content1" style="display: inline-block;width: 50%;height: 100%;">
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="content4" style="left: 100px;display:inline-block;height: 100%;width: 50%; overflow: hidden;">
+                    <div class="s-line2" style="display: inline-block; position: absolute; width: 200px; left: -100%;">
+                        <p class="s-content2" style="display: inline-block;width: 50%;height: 100%;">
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                            <span style="width: 10px"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <span style="position: absolute; width:20px; height: 20px;top:-1px; left: 0px; background-color: lightyellow"></span>
+        </div>
+        <div style="overflow: hidden;font-size:0">
+            <div class="line-content" style="width: 400px; height: 100%; position: relative; left: -100%">
+                <p class="content" style="display:inline-block;height: 100%;width: 50%">
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                    <span style="width: 10px"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+     -->
+    </div>
+    <script src="../commonJs/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function() {
+            var content = $(".content");
+            // var total = content + content;
+            // 克隆一份content用于循环
+            $(".line-content").append(content.clone());
+            $(".line-content2").append($(".content2").clone());
+            var flag = false;
+            
+            $(".s-line1").append($(".s-content1").clone());
+            $(".s-line2").append($(".s-content2").clone());
+            // $(".line-content").animate({"left": '0'}, 3000, function() {
+            //     $(this).css("left", "-100%");
+            //     roll();
+            // });
+            roll();
+            function roll() {
+                $(".line-content").animate({"left": '0'}, 3000, 'linear', function() {
+                    $(this).css("left", "-100%");
+                    roll();
+                });  
+            }
+
+            roll2();
+            function roll2() {
+                $(".s-line1").animate({"left": '-100%'}, 3000, 'linear', function() {
+                    $(this).css("left", "0");
+                    roll2();
+                });  
+            }
+            
+            roll3();
+            function roll3() {
+                $(".line-content2").animate({"left": '-100%'}, 3000, 'linear', function() {
+                    $(this).css("left", "0");
+                    roll3();
+                }); 
+            }
+
+            roll4();
+            function roll4() {
+                $(".s-line2").animate({"left": '0'}, 3000, 'linear', function() {
+                    $(this).css("left", "-100%");
+                    roll4();
+                }); 
+            }
+            // var t = setInterval(function() {
+            //     if (flag) {
+            //         console.log(flag);
+            //         $(".line-content").css("left", "-200px");
+            //         flag = false;
+            //         // return;
+            //         // clearInterval(t)
+            //     } else {
+            //         $(".line-content").animate({"left": '200px'}, 800, function() {
+            //             flag = true;
+            //         });
+            //     }
+                
+            // }, 900)
+            
+        })
+    </script>
+</body>
+</html>
