@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画-闪烁的箭头</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .none {
+        display: none;
+    }
+    .singalpineWrapper {
+        position: relative;
+        width: 500px;
+    }
+    .singalpineWrapper .pine{
+        position: absolute;
+        display: inline-block;
+        width: 200px;
+        height: 20px;
+        background-color: lightcoral;
+        text-align: center;
+        color: #fff;
+    }
+    .singalpineWrapper .pine2 {
+        top: 20px;
+        left: 200px;
+        transform: rotate(90deg);
+        transform-origin: left top;
+    }
+    .singalpineWrapper .pine3 {
+        left: 200px;
+        top: 200px;
+    }
+
+    .doublepineWrapper {
+        margin-left: 500px;
+        position: relative;
+        width: 600px;
+    }
+
+    .doublepineWrapper .pine{
+        position: absolute;
+        display: inline-block;
+        width: 200px;
+        height: 20px;
+        background-color: lightcoral;
+        text-align: center;
+        color: #fff;
+        /* overflow: hidden; */
+    }
+    .doublepineWrapper .pine1 {
+        top: 200px;
+    }
+    .doublepineWrapper .pine2 {
+        left: 200px;
+        transform: rotate(90deg);
+        transform-origin: left top;
+    }
+    .doublepineWrapper .pine3 {
+        left: 200px;
+        /* top: 200px; */
+    }
+    .shine {
+        position: relative;
+        top: 300px;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <!-- 单向 -->
+    <div class="singalpineWrapper">
+        <div class="pine pine1"><span class="none"> -> </span></div>
+        <div class="pine pine2"><span class="none"> -> </span></div>
+        <div class="pine pine3"><span class="none"> -> </span></div>
+    </div>
+
+    <!-- 双向-->
+    <div class="doublepineWrapper">
+        <div class="pine pine1"><span class="none"> -> </span><span class="none"> <- </span></div>
+        <div class="pine pine2"><span class="none"> <-> </span></div>
+        <div class="pine pine3"><span class="none"> <- </span><span class="none"> -> </span></div>
+    </div>
+
+    <div class="shine"></div>
+
+    <script src="../commonJs/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function() {
+            // 单向箭头滚动
+            singalArrowRoll();
+            
+            // 双向箭头滚动
+            doubleArrowRoll();
+
+            // 闪烁
+            change();
+        })
+
+        function singalArrowRoll() {
+            var startIndex = 0;
+            var endIndex = $(".singalpineWrapper .pine").length - 1;
+            setInterval(function(){
+                if (startIndex > endIndex) {
+                    startIndex = 0;
+                }
+                $('.singalpineWrapper .pine span').hide();
+                $(`.singalpineWrapper .pine:eq(${startIndex}) span`).show();
+                // console.log(startIndex);
+                startIndex++;
+            }, 600); 
+        }
+
+        function doubleArrowRoll() {
+            var startIndex = [[0,0], [2,0]];
+            var endIndex = [[0,1], [2,1]];
+            var middleIndex = 1;
+            var count = 0;
+            // console.log($(`.doublepineWrapper div:eq(0) span`).eq(1));
+            setInterval(function() {
+                $('.doublepineWrapper div span').hide();
+                var arr;
+                // console.log(count);
+
+                if (count > 2) {
+                    count = 0;
+                    return;
+                }
+                if (count !== 1) {
+                    if (count == 2) {
+                        arr = endIndex;
+                    } else {
+                        arr = startIndex;
+                    }
+                    for(let i = 0; i < arr.length; i++) {
+                        // console.log(`.doublepineWrapper div:eq(${arr[i][0]}) span:eq(${arr[i][1]})`);
+                        $(`.doublepineWrapper div:eq(${arr[i][0]}) span:eq(${arr[i][1]})`).show();
+                    }
+
+                } else {
+                    $(`.doublepineWrapper div:eq(${middleIndex}) span`).show();
+                    numFlag = true;
+                }
+
+                count++;
+                
+
+            }, 600)
+            // setInterval(function() {
+            //     $('.doublepineWrapper div span').hide();
+            //     if (sFlag) {
+            //         $(`.doublepineWrapper div:eq(${startIndex}) span`).show();
+            //         sFlag = false;
+            //     } else {
+            //         for(let i = 0; i < endIndex.length; i++) {
+            //             $(`.doublepineWrapper div:eq(${endIndex[i]}) span`).show();
+            //         }
+            //         sFlag = true;
+            //     }
+            // }, 600)
+        }
+        
+        var t;
+        function change(){
+            window.clearInterval(t);
+            $('.shine').animate({opacity:0.5},2000).animate({opacity:1},2000);
+            t=window.setInterval('change()',3000);
+        };
+    </script>
+</body>
+</html>
